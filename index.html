@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Bursa — The Green Capital</title>
+<meta name="description" content="Uludağ'ın eteklerinde, ilk Osmanlı başkentinde sinematik bir görsel yolculuk: Bursa." />
+
+<link rel="icon" href="data:," />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<main class="site-shell">
+  <section class="cinema-scroll" id="cinema">
+    <div class="stage">
+      <div class="world">
+
+        <img class="scene-img sky-img" src="assets/uludag-kis.jpg" alt="" />
+
+        <header class="site-header">
+          <a class="site-logo" href="#cinema" data-i18n="site.logo">Bursa, Türkiye</a>
+          <nav class="site-nav">
+            <a href="#intro" data-scroll="0" data-i18n="nav.home">Anasayfa</a>
+            <a href="#rotalar" data-i18n="nav.routes">Rotalar</a>
+            <a href="#lezzetler" data-i18n="nav.food">Yöresel Lezzetler</a>
+            <a href="#gallery" data-i18n="nav.gallery">Fotoğraflar</a>
+            <a href="https://tr.wikipedia.org/wiki/Bursa" data-href-tr="https://tr.wikipedia.org/wiki/Bursa" data-href-en="https://en.wikipedia.org/wiki/Bursa" target="_blank" rel="noopener">Wikipedia</a>
+          </nav>
+          <button class="language-switcher" type="button" id="langSwitch" aria-label="Dili değiştir / Switch language" aria-pressed="false">
+            <span class="lang-option is-active" data-lang="tr">TR</span>
+            <span class="lang-sep" aria-hidden="true">/</span>
+            <span class="lang-option" data-lang="en">EN</span>
+          </button>
+        </header>
+
+        <div class="back-stack">
+          <img class="scene-img back-img back-four" src="assets/uludag-yaz.jpg" alt="" />
+          <img class="scene-img back-img back-bazaar" src="assets/koza-han.jpg" alt="" />
+        </div>
+
+        <h1 class="hero-title">BURSA</h1>
+
+        <img class="scene-img splitframe-img splitframe-left" src="assets/uludag-kis.jpg" alt="" />
+        <img class="scene-img splitframe-img splitframe-right" src="assets/uludag-yaz.jpg" alt="" />
+
+        <img class="scene-img bridge-img" src="assets/anasayfafoto.jpg" alt="" />
+        <img class="scene-img frame-two-img" src="assets/cumalikizik.jpg" alt="" />
+
+        <div class="shade" aria-hidden="true"></div>
+
+        <section class="intro-copy" id="intro">
+          <p data-i18n="intro.text">
+            Dağın eteğinde kurulmuş, imparatorluğun, ipeğin, taşın, ormanların ve
+            yüzyıllara yayılan bir tarihin biçimlendirdiği bir şehir.
+          </p>
+          <div class="intro-pills">
+            <span class="pill" data-i18n="intro.pill1">Uludağ</span>
+            <span class="pill" data-i18n="intro.pill2">Osmanlı Başkenti</span>
+            <span class="pill" data-i18n="intro.pill3">Yeşil Şehir</span>
+          </div>
+        </section>
+
+        <section class="story-panel story-panel-bridge" id="history">
+          <h2 data-i18n="history.title">Şehir, dağın altında büyüdü.</h2>
+          <p data-i18n="history.text">
+            Bursa, Osmanlı Devleti'nin ilk başkenti oldu ve yüzyıllar boyunca
+            camiler, hanlar, çarşılar, türbeler, bahçeler ve mahalleler
+            etrafında şekillenerek büyüdü.
+          </p>
+          <dl class="facts">
+            <div class="fact">
+              <dt>1326</dt>
+              <dd data-i18n="history.fact1">Osmanlı başkenti</dd>
+            </div>
+            <div class="fact">
+              <dt>2014</dt>
+              <dd data-i18n="history.fact2">Tarihi Bursa ve Cumalıkızık, UNESCO listesinde</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="story-panel story-panel-bazaar" id="uludag">
+          <h2 data-i18n="bazaar.title">Eski şehir hâlâ yaşıyor.</h2>
+          <p data-i18n="bazaar.text">
+            Koza Han'dan Ulu Cami'ye, kapalı çarşılardan geleneksel sokaklara
+            ve çay bahçelerine kadar, Bursa'nın tarihi merkezi hâlâ
+            gündelik hayatın bir parçası.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="routes-section" id="rotalar">
+    <div class="routes-head">
+      <span class="routes-kicker" data-i18n="routes.kicker">Rotalar</span>
+      <h2 data-i18n="routes.title">Bursa'yı nasıl keşfetmek istersin?</h2>
+      <p data-i18n="routes.desc">Kalan sürene göre optimize edilmiş, adım adım bir gezi planı — durak durak, harita eşliğinde.</p>
+      <div class="day-selector" role="tablist" aria-label="Gün seçimi">
+        <button class="day-tab" type="button" role="tab" data-days="1" aria-selected="false" data-i18n="routes.day1">1 Gün</button>
+        <button class="day-tab" type="button" role="tab" data-days="2" aria-selected="false" data-i18n="routes.day2">2 Gün</button>
+        <button class="day-tab is-active" type="button" role="tab" data-days="3" aria-selected="true" data-i18n="routes.day3">3 Gün</button>
+      </div>
+    </div>
+    <div class="routes-body" id="routesBody">
+      <!-- day blocks rendered by routes.js -->
+    </div>
+  </section>
+
+  <section class="food-section" id="lezzetler">
+    <div class="food-head">
+      <span class="food-kicker" data-i18n="food.kicker">Yöresel Lezzetler</span>
+      <h2 data-i18n="food.title">Bursa'nın sofrası</h2>
+      <p data-i18n="food.desc">İskender'den kestane şekerine, Bursa'yı damakta hatırlatan tatlar.</p>
+    </div>
+    <div class="food-grid">
+      <article class="food-item">
+        <img src="assets/iskender-kebap.avif" alt="İskender Kebap" loading="lazy" data-i18n-alt="food.iskender.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.iskender.name">İskender Kebap</h3>
+          <p data-i18n="food.iskender.desc">Kızarmış pide, tereyağı-domates sosu ve yoğurtla servis edilen Bursa'nın en tanınmış lezzeti.</p>
+        </div>
+      </article>
+      <article class="food-item">
+        <img src="assets/inegol-kofte.jpg" alt="İnegöl Köfte" loading="lazy" data-i18n-alt="food.inegol.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.inegol.name">İnegöl Köfte</h3>
+          <p data-i18n="food.inegol.desc">Soğan ve baharatla harmanlanmış, yağsız ve gevrek dokusuyla ünlü İnegöl usulü köfte.</p>
+        </div>
+      </article>
+      <article class="food-item">
+        <img src="assets/kestane-sekeri.webp" alt="Kestane Şekeri" loading="lazy" data-i18n-alt="food.kestane.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.kestane.name">Kestane Şekeri</h3>
+          <p data-i18n="food.kestane.desc">Bursa kestanesinden yapılan, şerbetle kaplanmış geleneksel şekerleme.</p>
+        </div>
+      </article>
+      <article class="food-item">
+        <img src="assets/cantik.jpeg" alt="Cantık" loading="lazy" data-i18n-alt="food.cantik.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.cantik.name">Cantık</h3>
+          <p data-i18n="food.cantik.desc">İç harcı etli ya da peynirli, mayalı hamurdan yapılan Bursa'ya özgü mini pide.</p>
+        </div>
+      </article>
+      <article class="food-item">
+        <img src="assets/kemalpasa-tatlisi.jpg" alt="Kemalpaşa Tatlısı" loading="lazy" data-i18n-alt="food.kemalpasa.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.kemalpasa.name">Kemalpaşa Tatlısı</h3>
+          <p data-i18n="food.kemalpasa.desc">Hafif şerbetli, küçük boyutlu bir hamur tatlısı; Kemalpaşa ilçesinin adını taşır.</p>
+        </div>
+      </article>
+      <article class="food-item">
+        <img src="assets/sut-helvasi.webp" alt="Süt Helvası" loading="lazy" data-i18n-alt="food.suthelvasi.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.suthelvasi.name">Süt Helvası</h3>
+          <p data-i18n="food.suthelvasi.desc">Fırında kavrulmuş un ve sütle yapılan, üzeri tarçınlı, yumuşak dokulu geleneksel bir tatlı.</p>
+        </div>
+      </article>
+      <article class="food-item">
+        <img src="assets/tahinli-pide.jpg" alt="Tahinli Pide" loading="lazy" data-i18n-alt="food.tahinlipide.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.tahinlipide.name">Tahinli Pide</h3>
+          <p data-i18n="food.tahinlipide.desc">İnce açılmış hamurun üzerine bol tahin sürülüp fırınlanan, sevilen bir Bursa kahvaltılığı.</p>
+        </div>
+      </article>
+      <article class="food-item">
+        <img src="assets/bursa-seftalisi.jpg" alt="Bursa Şeftalisi" loading="lazy" data-i18n-alt="food.seftali.name" />
+        <div class="food-item-body">
+          <h3 data-i18n="food.seftali.name">Bursa Şeftalisi</h3>
+          <p data-i18n="food.seftali.desc">Bursa ovasının sulak topraklarında yetişen, sulu ve aromatik yönüyle ünlü şeftali çeşidi.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="photo-gallery" id="gallery">
+    <div class="gallery-head">
+      <span class="gallery-kicker" data-i18n="gallery.kicker">Fotoğraflar</span>
+      <h2 data-i18n="gallery.title">Bursa'dan kareler</h2>
+      <p data-i18n="gallery.desc">Köprüden dağa, handan köye — şehri oluşturan yedi görüntü.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-wide">
+        <img src="assets/irgandi-kopru.jpg" alt="İrgandı Köprüsü, sonbahar renkleri içinde Bursa vadisine bakıyor" loading="lazy" />
+        <figcaption data-i18n-html="gallery.item1.html"><span>İrgandı Köprüsü</span>Osmanlı dönemine ait, üzeri dükkânlarla kaplı tarihi köprü.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/ulu-cami.jpeg" alt="Bursa Ulu Cami dış cephesi" loading="lazy" />
+        <figcaption data-i18n-html="gallery.item2.html"><span>Ulu Cami</span>Erken Osmanlı mimarisinin anıtsal örneği.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/koza-han.jpg" alt="Koza Han avlusu" loading="lazy" />
+        <figcaption data-i18n-html="gallery.item3.html"><span>Koza Han</span>İpek ticaretinin kalbi, sessiz bir avlu.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/cumalikizik.jpg" alt="Cumalıkızık'ta Osmanlı evleri" loading="lazy" />
+        <figcaption data-i18n-html="gallery.item4.html"><span>Cumalıkızık</span>Korunmuş bir Osmanlı köyü, dar taş sokaklar.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/tophane.jpg" alt="Tophane Saat Kulesi" loading="lazy" />
+        <figcaption data-i18n-html="gallery.item5.html"><span>Tophane</span>Şehri ve Uludağ'ı gören tarihi tepe.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/uludag-yaz.jpg" alt="Uludağ'da yaz aylarında teleferik ve orman" loading="lazy" />
+        <figcaption data-i18n-html="gallery.item6.html"><span>Uludağ — Yaz</span>Sık çam ormanları ve teleferik hattı.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="assets/uludag-kis.jpg" alt="Uludağ'da kar manzarası" loading="lazy" />
+        <figcaption data-i18n-html="gallery.item7.html"><span>Uludağ — Kış</span>Zirveye uzanan pistler ve kar örtüsü.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo" data-i18n="site.logo">Bursa, Türkiye</span>
+        <p data-i18n="footer.brand">Dağın altında kurulmuş, ilk Osmanlı başkenti. Sinematik bir gezi hikâyesi.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#intro" data-scroll="0" data-i18n="nav.home">Anasayfa</a>
+        <a href="#rotalar" data-i18n="nav.routes">Rotalar</a>
+        <a href="#lezzetler" data-i18n="nav.food">Yöresel Lezzetler</a>
+        <a href="#gallery" data-i18n="nav.gallery">Fotoğraflar</a>
+        <a href="https://tr.wikipedia.org/wiki/Bursa" data-href-tr="https://tr.wikipedia.org/wiki/Bursa" data-href-en="https://en.wikipedia.org/wiki/Bursa" target="_blank" rel="noopener">Wikipedia</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.copyright">© 2026 Bursa, Türkiye — tanıtım ve gezi rehberi.</p>
+      <p class="footer-credits" data-i18n="footer.credits">Görseller: yazara ait fotoğraflar ve Wikimedia Commons (CC BY-SA).</p>
+    </div>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+<script src="i18n.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="routes-data.js"></script>
+<script src="routes.js"></script>
+</body>
+</html>
